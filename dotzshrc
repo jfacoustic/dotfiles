@@ -5,11 +5,34 @@ export PATH=/usr/local/anaconda3/bin:$PATH
 export ZSH="/Users/jfm/.oh-my-zsh"
 export JAVA_HOME=$(/usr/libexec/java_home)
 
+
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+eval $(thefuck --alias f)
+alias firefox="open -a /Applications/Firefox\ Developer\ Edition.app"
+alias a="git add"
+alias c="git commit"
+alias p="git push"
+alias u="git pull"
+alias C="git checkout"
+alias s="git status"
+alias F="git fetch"
+alias m="git merge"
+alias cl="git clone"
+alias nd="npm install --save-dev"
+alias redis-cli="rdcli"
+alias docker-kill-all="docker kill $(docker ps -q)"
+alias dkill-volumes="docker volume rm $(docker volume ls -q) && docker volume prune -f"
+alias dpurge="docker kill $(docker ps -aq) && docker rm $(docker ps -aq) && docker rm $(docker volume ls -q) && docker volume prune -f"
+alias k-explain="kubectl explain --api-version='apps/v1'"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -120,4 +143,10 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+alias nodei="cat ~/.noderc - | node -i"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
