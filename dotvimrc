@@ -9,10 +9,30 @@ Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
 Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'morhetz/gruvbox'
+Plug 'ctrlpvim/ctrlp.vim'
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+Plug 'ngmy/vim-rubocop'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'pechorin/any-jump.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:prettier#autoformat_config_present = 1
+let g:prettier#autoformat_require_pragma = 0
 
 map <C-n> :NERDTreeToggle<CR>
+
+colorscheme gruvbox
+
+set relativenumber
