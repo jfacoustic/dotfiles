@@ -22,6 +22,8 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pechorin/any-jump.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'puremourning/vimspector'
+Plug 'tpope/vim-endwise'
 
 call plug#end()
 
@@ -30,9 +32,11 @@ let g:ale_sign_warning = '⚠️'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:prettier#autoformat_config_present = 1
 let g:prettier#autoformat_require_pragma = 0
+let g:vimspector_enable_mappings = 'HUMAN'
 
 map <C-n> :NERDTreeToggle<CR>
 
 colorscheme gruvbox
 
 set relativenumber
+set clipboard=unnamed
