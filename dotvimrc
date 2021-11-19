@@ -5,11 +5,13 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
 Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'ctrlpvim/ctrlp.vim'
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
@@ -18,12 +20,12 @@ Plug 'prettier/vim-prettier', {
 
 Plug 'ngmy/vim-rubocop'
 Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pechorin/any-jump.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'puremourning/vimspector'
 Plug 'tpope/vim-endwise'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -33,6 +35,9 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:prettier#autoformat_config_present = 1
 let g:prettier#autoformat_require_pragma = 0
 let g:vimspector_enable_mappings = 'HUMAN'
+
+let g:ctrlp_user_command =  
+  \ ['.git', 'cd %s && git ls-files -co --exclude-standard'] 
 
 map <C-n> :NERDTreeToggle<CR>
 
