@@ -1,3 +1,10 @@
+# brew shell autocompletion
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -112,9 +119,6 @@ source $ZSH/oh-my-zsh.sh
 
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 eval $(thefuck --alias)
 
@@ -125,6 +129,25 @@ bindkey -v
 
 alias gitvimdiff="git difftool --tool=vimdiff --no-prompt"
 
-export PATH="$PATH:`pwd`/.flutter/bin"
+export PATH=$PATH:/Users/josh/.flutter/bin
 export PATH=$PATH:/usr/local/sbin
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH=$PATH:/usr/local/opt/gnu-sed/libexec/gnubin
+
+# Fix postgres
+# rm /Users/josh/Library/Application\ Support/Postgres/var-13/postmaster.pid
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(rbenv init - zsh)"
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+export PATH="/usr/local/opt/openssl\@1.1/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl\@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl\@1.1/include"
+
